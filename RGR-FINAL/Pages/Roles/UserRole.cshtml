@@ -1,0 +1,30 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@using RGR_FINAL.Data.Identity;
+@inject SignInManager<ApplicationIdentityUser> SignInManager
+@model RGR_FINAL.Pages.Roles.UserRoleModel
+@{
+    ViewData["Title"] = "Edit role";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to page "Role"</h1>
+</div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <span>Logged in</span>
+    <br />
+    <br />
+    <form method="post" action="">
+        <b>Role: </b>
+        <input type ="text" name="RoleName" />
+        <button type="submit" class="btn btn-lg btn-primary" asp-page-handler="NewRole">Create New Role</button>
+        <button type="submit" class="btn btn-lg btn-primary" asp-page-handler="AddRole">Assign Role</button>
+        <button type="submit" class="btn btn-lg btn-primary" asp-page-handler="RemoveRole">Remove Role</button>
+    </form>
+}
+else
+{
+    <span>Not Logged in</span>
+}

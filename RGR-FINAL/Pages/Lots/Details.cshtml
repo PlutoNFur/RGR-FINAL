@@ -1,0 +1,68 @@
+﻿@page
+@using RGR_FINAL.Data.Identity;
+@model RGR_FINAL.Pages.Lots.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+ 
+<div>
+    <h4>Lot</h4>
+    <hr />
+    <dl class="row">
+        @{
+            var img = $"/images/{Model.Lot.Img}";
+            <img class="card-img-top imageThumbnail" src="@img" asp-append-version="true"/>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.Img)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.Img)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.EndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.StartPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.StartPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.Category)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lot.Expired)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lot.Expired)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    <a asp-page="./Edit" asp-route-id="@Model.Lot?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

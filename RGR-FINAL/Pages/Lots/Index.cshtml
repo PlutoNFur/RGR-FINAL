@@ -1,0 +1,59 @@
+﻿@page
+@using RGR_FINAL.Data.Identity;
+@model RGR_FINAL.Pages.Lots.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>All Lots</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<div class = "row mt-5 mb-2">
+    @foreach(var item in Model.Lot)
+    {
+        var img = $"/images/{item.Img}";
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card-deck">
+                <div class="card m-3 cardBoxShadow">
+                    <div class="card-header text-center cardHeaderStyle">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class="text-center cardBodyStyle">
+                        <img class="card-img-top imageThumbnail" src="@img" asp-append-version="true"/>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <h6>Start auction</h6>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <h6>End auction</h6>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        <h6>Start price</h6>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartPrice)
+                        </td>
+                        <h6>The auction is over</h6>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Expired)
+                        </td>
+                        <p></p>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

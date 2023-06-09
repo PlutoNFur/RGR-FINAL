@@ -1,0 +1,77 @@
+﻿@page
+@model RGR_FINAL.Pages.Lots.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+<h3>Page for admin</h3>
+
+<h4>Lot</h4>
+<hr />
+<div class="row">
+    @{
+        var img = $"/images/{Model.Lot.Img}";
+        <img class="card-img-top imageThumbnail" src="@img" asp-append-version="true"/>
+    }
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Lot.Id" />
+            <div class="form-group">
+                <label asp-for="Lot.Name" class="control-label"></label>
+                <input asp-for="Lot.Name" class="form-control" />
+                <span asp-validation-for="Lot.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lot.Description" class="control-label"></label>
+                <input asp-for="Lot.Description" class="form-control" />
+                <span asp-validation-for="Lot.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lot.Img" class="control-label"></label>
+                <input asp-for="Lot.Img" class="form-control" />
+                <span asp-validation-for="Lot.Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lot.StartDate" class="control-label"></label>
+                <input asp-for="Lot.StartDate" class="form-control" />
+                <span asp-validation-for="Lot.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lot.StartPrice" class="control-label"></label>
+                <input asp-for="Lot.StartPrice" class="form-control" />
+                <span asp-validation-for="Lot.StartPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lot.Category" class="control-label"></label>
+                <p>
+                    <select>
+                        <option>Art</option>
+                        <option>Furniture</option>
+                        <option>Another</option>
+                    </select>
+                </p>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Lot.Expired" /> @Html.DisplayNameFor(model => model.Lot.Expired)
+                </label>
+                <span asp-validation-for="Lot.Expired" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
